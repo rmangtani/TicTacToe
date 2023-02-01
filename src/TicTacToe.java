@@ -1,3 +1,4 @@
+import java.awt.*;
 /**
  * A TicTacToe game adopted from CodeHS
  * Written to be used for either the console or
@@ -35,6 +36,11 @@ public class TicTacToe
     private Square[][] board;
     private boolean isGameOver;
 
+    private TicTacToeViewer window;
+
+    private static final int MAX_WIDTH = 600;
+    private static final int MAX_HEIGHT = 700;
+
     /**
      * Constructor which initialized the board with BLANKs.
      * The winner is also initialized to BLANK.
@@ -45,8 +51,8 @@ public class TicTacToe
         // Initialize Squares in the board
         this.board = new Square[3][3];
         for(int row = 0; row < this.board.length; row++) {
-            for(int col = 0; col< this.board[row].length; col++) {
-                this.board[row][col] = new Square(row, col);
+            for(int col = 0; col < this.board[row].length; col++) {
+                this.board[row][col] = new Square(row, col, window);
             }
         }
 
@@ -56,6 +62,8 @@ public class TicTacToe
         this.winner = BLANK;
         this.winIndex = -1;
         this.winDirection = -1;
+
+        this.window = new TicTacToeViewer(MAX_WIDTH, MAX_HEIGHT, board, this);
     }
 
     /******************** Methods You May Find Helpful ********************/
@@ -119,6 +127,7 @@ public class TicTacToe
             } else {
                 System.out.println("That space is taken, or you entered an invalid row/col");
             }
+            window.repaint();
         }
 
         this.printBoard();
