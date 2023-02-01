@@ -32,6 +32,7 @@ public class Square {
     public Square(int row, int col, TicTacToeViewer window) {
         this.row = row;
         this.col = col;
+        // x and y coordinates of each square
         x = (col+1)*sideLength;
         y = (row+1)*sideLength;
 
@@ -71,10 +72,12 @@ public class Square {
     public void draw(Graphics g) {
         g.setColor(Color.black);
         g.drawRect(x, y, sideLength, sideLength);
+        // If it's a winning square, fill it green
         if (isWinningSquare) {
             g.setColor(Color.green);
             g.fillRect(x, y, sideLength, sideLength);
         }
+        // Drawing the x or o image if there's a marker there
         if (marker.equals(TicTacToe.X_MARKER)) {
             Image image = new ImageIcon("Resources/X.png").getImage();
             g.drawImage(image, x, y, sideLength, sideLength, window);

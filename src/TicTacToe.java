@@ -38,6 +38,7 @@ public class TicTacToe
 
     private TicTacToeViewer window;
 
+    // Width and height of window
     private static final int MAX_WIDTH = 600;
     private static final int MAX_HEIGHT = 700;
 

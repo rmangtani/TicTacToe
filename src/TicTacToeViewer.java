@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class TicTacToeViewer extends JFrame {
-    // TODO: Complete this class
     private Square[][] board;
     private int windowWidth;
     private int windowHeight;
@@ -23,22 +22,23 @@ public class TicTacToeViewer extends JFrame {
     }
 
     public void paint(Graphics g) {
-        // draw numbers
         g.setColor(Color.red);
         g.setFont(new Font("SERIF", Font.PLAIN,30));
+        // Drawing the axes of the board
         g.drawString("0", 80, 200);
         g.drawString("1", 80, 312);
         g.drawString("2", 80, 430);
         g.drawString("0", 170, 100);
         g.drawString("1", 287, 100);
         g.drawString("2", 410, 100);
-        // draw board - the 9 boxes
+        // Draw board by drawing each of the 9 boxes one by one
         for(int i = 0; i < this.board.length; i++) {
             for(int j = 0; j< this.board[i].length; j++) {
-                Square currSquare = board[i][j];
-                currSquare.draw(g);
+                board[i][j].draw(g);
             }
         }
+
+        // Write if it's a tie or who won if the game is over
         if (game.getGameOver()) {
             g.setColor(Color.black);
             if (game.checkTie()) {
